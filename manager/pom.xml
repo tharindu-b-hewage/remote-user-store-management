@@ -20,13 +20,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.wso2.carbon.custom.remote.user.store</groupId>
-        <artifactId>aggregator-module</artifactId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-
     <groupId>org.wso2.carbon.remote.user.store</groupId>
     <artifactId>org.wso2.carbon.remote.user.store.manager</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -68,41 +61,6 @@
         </repository>
     </repositories>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>wso2.releases</id>
-            <name>WSO2 internal Repository</name>
-            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </pluginRepository>
-        <pluginRepository>
-            <id>wso2.snapshots</id>
-            <name>WSO2 Snapshot Repository</name>
-            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </pluginRepository>
-        <pluginRepository>
-            <id>wso2-nexus</id>
-            <name>WSO2 internal Repository</name>
-            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
-
     <dependencies>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
@@ -135,9 +93,10 @@
             <version>${httpcomponents-httpclient.wso2.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.orbit.org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpcomponents-httpclient.wso2.version}</version>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.scr.ds-annotations</artifactId>
+            <version>${org.apache.felix.scr.ds-annotations.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -159,6 +118,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <version>${maven.bundle.plugins.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -166,10 +126,11 @@
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Private-Package>org.wso2.carbon.remote.user.store.manager.internal,</Private-Package>
                         <Import-Package>
-                            org.wso2.carbon.utils.*,
-                            org.wso2.carbon.core.*,
-                            org.osgi.framework,
-                            ;resolution:=optional
+                            <!--org.wso2.carbon.utils.*,-->
+                            <!--org.wso2.carbon.core.*,-->
+                            <!--org.osgi.framework,-->
+                            <!--org.osgi.service.component,-->
+                            <!--;resolution:=optional-->
                         </Import-Package>
                         <Export-Package>!org.wso2.carbon.remote.user.store.manager.internal,
                             org.wso2.carbon.remote.user.store.manager.*
@@ -194,12 +155,14 @@
         <wso2.maven.compiler.source>1.8</wso2.maven.compiler.source>
         <wso2.maven.compiler.target>1.8</wso2.maven.compiler.target>
         <httpcomponents-httpclient.wso2.version>4.3.1.wso2v2</httpcomponents-httpclient.wso2.version>
-        <maven-scr-plugin.version>1.7.2</maven-scr-plugin.version>
+        <maven-scr-plugin.version>1.22.0</maven-scr-plugin.version>
         <httpclient.version>4.1.1</httpclient.version>
-        <org.wso2.carbon.utils.version>4.4.11</org.wso2.carbon.utils.version>
-        <carbon.kernel.version>4.4.7</carbon.kernel.version>
+        <org.wso2.carbon.utils.version>4.4.36</org.wso2.carbon.utils.version>
+        <carbon.kernel.version>4.4.35</carbon.kernel.version>
         <json.wso2.version>3.0.0.wso2v1</json.wso2.version>
-        <carbon.identity.framework.version>5.5.0</carbon.identity.framework.version>
+        <carbon.identity.framework.version>5.12.257</carbon.identity.framework.version>
         <commons-logging.version>1.2</commons-logging.version>
+        <org.apache.felix.scr.ds-annotations.version>1.2.4</org.apache.felix.scr.ds-annotations.version>
+        <maven.bundle.plugins.version>2.4.0</maven.bundle.plugins.version>
     </properties>
 </project>
