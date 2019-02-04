@@ -17,7 +17,7 @@ in the WSO2 Identity Server.
 
 ### Prerequisites
 * Extracted WSO2 Identity Server pack(Find the latest WSO2 IS pack from [here](https://wso2
-.com/identity-and-access-management/)). We will call this extracted location as the ${IS_HOME}.
+.com/identity-and-access-management/). We will call this extracted location as the ${IS_HOME}.
 Please note that this sample has only been tested with the version, 5.7.0.
 * A MySQL 5.7 database as the remote user database. 
 
@@ -73,7 +73,3 @@ panel.
 ![tutorial](./tutorial.gif)
 ## Built With
 * [Maven](https://maven.apache.org/) - Dependency Management
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
